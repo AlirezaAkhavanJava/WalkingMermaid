@@ -1,24 +1,24 @@
 package com.arcade.walkingmemaid.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
-public class Author {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+public class Author extends BaseClass{
+
 
     @Column(name = "f_name", nullable = false)
     private String firstName;
@@ -28,12 +28,9 @@ public class Author {
     private String email;
     private int age;
 
-    @Column(updatable = false, nullable = false)
-    private LocalDateTime createdAt;
-    @Column(insertable = false)
-    private LocalDateTime lastModified;
 
-
-    @ManyToMany
+    @ManyToMany(mappedBy = "authors")
     private List<Course>  courses;
+
+
 }
