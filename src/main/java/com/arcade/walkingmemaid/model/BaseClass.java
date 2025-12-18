@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public class BaseClass {
 
-    // I USE THIS SHIT IN EVERY ENTITY
+    // Auto generate id for every entity
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -27,7 +27,7 @@ public class BaseClass {
     private LocalDateTime createdAt;
     private LocalDateTime lastModifiedAt;
 
-    // WHO THE FUCK DID IT
+   // Who did it
     public String createdBy;
     public String lastModifiedBy;
 
